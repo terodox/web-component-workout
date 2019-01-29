@@ -1,7 +1,11 @@
+import './current-weather.scss';
+
 (function () {
     const template = document.createElement('template');
-    template.innerHTML = `<div>
-        <h1>CURRENT WEATHER <span>${this.zip}</span></h1>
+    template.innerHTML = `
+    <style>{{current-weather.scss}}</style>
+    <div class="mdc-card">
+        <h1 class="something">CURRENT WEATHER <span></span></h1>
     </div`;
 
     class CurrentWeather extends HTMLElement {
