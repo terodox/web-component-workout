@@ -31,7 +31,7 @@ import { API_KEY } from './api-key';
             padding: 16px;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
-            background-color: #CCC;
+            background-color: #e5eeff;
             width: 200px;
         }
     </style>
