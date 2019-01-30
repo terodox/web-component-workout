@@ -1,16 +1,27 @@
 'use strict';
 
 const fs = require('fs');
-const JS_FILE_PATH = './dist/current-weather.js'
 const FILE_OPTIONS = { encoding: 'utf8' };
-const cssContents = fs.readFileSync('./dist/current-weather.css', FILE_OPTIONS);
-const jsContents = fs.readFileSync(JS_FILE_PATH, FILE_OPTIONS);
 
-const scrubbedcssContents = cssContents
-    .replace(/\n/g, '\\n')
-    .replace(/"/g, '\\"')
-    .replace(/\$/g, '\$');
+const jsFileNamesWithoutExtension = [
+    'current-weather',
+    'current-weather-loading'
+];
 
-const updatedJs = jsContents.replace(/{{current-weather.scss}}/, scrubbedcssContents);
+jsFileNamesWithoutExtension.forEach(jsFileNameWithoutExtension => {
+    const jsFilePath = `./dist/${jsFileNameWithoutExtension}.js`;
+    const cssContents = fs.readFileSync(`./dist/${jsFileNameWithoutExtension}.css`, FILE_OPTIONS);
+    const jsContents = fs.readFileSync(jsFilePath, FILE_OPTIONS);
 
-fs.writeFileSync(JS_FILE_PATH, updatedJs, FILE_OPTIONS);
+    console.log(`replacing css in ${jsFilePath}`);
+
+    const scrubbedcssContents = cssContents
+        .replace(/\n/g, '\\n')
+        .replace(/"/g, '\\"')
+        .replace(/\$/g, '\$');
+
+    const replaceTextRegex = new RegExp(`{{${jsFileNameWithoutExtension}.scss}}`);
+    const updatedJs = jsContents.replace(replaceTextRegex, scrubbedcssContents);
+
+    fs.writeFileSync(jsFilePath, updatedJs, FILE_OPTIONS);
+});

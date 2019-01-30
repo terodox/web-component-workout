@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: {
         'current-weather': './current-weather/current-weather.js',
+        'current-weather-loading': './current-weather/current-weather-loading.js',
     },
     output: {
         filename: '[name].js',
