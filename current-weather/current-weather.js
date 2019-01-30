@@ -12,10 +12,14 @@ import { API_KEY } from './api-key';
         .hide {
             display: none;
         }
+        .weather-image {
+            width: 200px;
+        }
     </style>
     <current-weather-loading></current-weather-loading>
     <div class="hide weather-content mdc-card">
-        <h1 class="something">CURRENT WEATHER <span></span></h1>
+        <img class="weather-image src="/images/partly.png" />
+        <h1 class="something">Zip: <span></span></h1>
     </div>`;
 
     class CurrentWeather extends HTMLElement {
@@ -49,7 +53,7 @@ import { API_KEY } from './api-key';
                 console.log('Swapping');
                 this.weatherContentElement.classList.remove('hide');
                 this.loadingElement.classList.add('hide');
-            }, 5000);
+            }, 500);
         }
     }
 
