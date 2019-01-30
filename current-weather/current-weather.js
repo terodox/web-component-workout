@@ -12,14 +12,35 @@ import { API_KEY } from './api-key';
         .hide {
             display: none;
         }
+
+        .weather-card {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 232px;
+        }
+        .weather-content {
+            display: flex;
+            flex-direction: column;
+            align-items: top;
+        }
+        .weather-content > * {
+            padding: 0 16px 0 16px;
+        }
         .weather-image {
+            padding: 16px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            background-color: #CCC;
             width: 200px;
         }
     </style>
     <current-weather-loading></current-weather-loading>
-    <div class="hide weather-content mdc-card">
-        <img class="weather-image src="/images/partly.png" />
-        <h1 class="something">Zip: <span></span></h1>
+    <div class="hide weather-card mdc-card">
+        <div class="weather-content">
+            <img class="weather-image" src="/images/partly.png" />
+            <h1 class="something">Zip: <span></span></h1>
+        </div>
     </div>`;
 
     class CurrentWeather extends HTMLElement {
